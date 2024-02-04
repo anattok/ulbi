@@ -1,21 +1,19 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-//заменил <Router> на <BrowserRouter as Router>,
-// что явно указывает, что мы используем маршрутизатор для браузера.
-// Это должно решить проблему, связанную с отсутствием свойств location и navigator
-import { AboutPage } from "./pages/AboutPage/AboutPage";
-import { MainPage } from "./pages/MainPage/MainPage";
+import {  Routes, Route, Link } from "react-router-dom";
+import  {AboutPageAsync}  from "./pages/AboutPage/AboutPage.async";
+import  {MainPageAsync}  from "./pages/MainPage/MainPage.async";
+import {Suspense} from "react";
 
 export const App = () => {
     return (
-        <Router>
             <div className="app">
                 <Link to="/">Main</Link>
                 <Link to="/about">About</Link>
-                <Routes>
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/main" element={<MainPage />} />
-                </Routes>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Routes>
+                        <Route path="/about" element={<AboutPageAsync />} />
+                        <Route path="/main" element={<MainPageAsync />} />
+                    </Routes>
+                </Suspense>
             </div>
-        </Router>
     );
 };

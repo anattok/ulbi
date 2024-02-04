@@ -1,5 +1,6 @@
-export const AboutPage = () =>{
+ const AboutPage = () =>{
     return(
         <div>ABOUT</div>
     )
 }
+export default AboutPage;
