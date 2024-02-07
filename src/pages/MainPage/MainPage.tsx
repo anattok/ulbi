@@ -1,6 +1,6 @@
 const MainPage = () =>{
     return(
-        <div>MAIN</div>
+        <div>Главная страница</div>
     )
 }
 
